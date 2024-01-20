@@ -1,0 +1,16 @@
+PODS:
+  - begini_ios_sdk (1.2.0)
+
+DEPENDENCIES:
+  - begini_ios_sdk
+
+SPEC REPOS:
+  trunk:
+    - begini_ios_sdk
+
+SPEC CHECKSUMS:
+  begini_ios_sdk: b3b09b0bb7919a23d97e6bc2fc2081a6bcc14bed
+
+PODFILE CHECKSUM: 76d22cafac78063021fb751504ebd354e14cdf9c
+
+COCOAPODS: 1.14.3

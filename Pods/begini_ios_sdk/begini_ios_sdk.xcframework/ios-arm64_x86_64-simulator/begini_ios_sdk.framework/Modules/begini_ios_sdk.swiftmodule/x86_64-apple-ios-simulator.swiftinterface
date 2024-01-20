@@ -1,0 +1,335 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7 (swiftlang-5.7.0.127.4 clang-1400.0.29.50)
+// swift-module-flags: -target x86_64-apple-ios12.1-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name begini_ios_sdk
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import AVFoundation
+import SystemConfiguration.CaptiveNetwork
+import Compression
+import Contacts
+import CoreFoundation
+import CoreLocation
+import EventKit
+import Foundation
+import Photos
+import Swift
+import SystemConfiguration
+import UIKit
+import _Concurrency
+import _StringProcessing
+import zlib
+public enum CompressionMethod : Swift.UInt16 {
+  case none
+  case deflate
+  public init?(rawValue: Swift.UInt16)
+  public typealias RawValue = Swift.UInt16
+  public var rawValue: Swift.UInt16 {
+    get
+  }
+}
+public typealias CRC32 = Swift.UInt32
+public typealias Consumer = (_ data: Foundation.Data) throws -> Swift.Void
+public typealias Provider = (_ position: Swift.Int64, _ size: Swift.Int) throws -> Foundation.Data
+extension Foundation.Data {
+  public func crc32(checksum: begini_ios_sdk.CRC32) -> begini_ios_sdk.CRC32
+  public static func compress(size: Swift.Int64, bufferSize: Swift.Int, provider: (_ position: Swift.Int64, _ size: Swift.Int) throws -> Foundation.Data, consumer: (_ data: Foundation.Data) throws -> Swift.Void) throws -> begini_ios_sdk.CRC32
+  public static func decompress(size: Swift.Int64, bufferSize: Swift.Int, skipCRC32: Swift.Bool, provider: (_ position: Swift.Int64, _ size: Swift.Int) throws -> Foundation.Data, consumer: (_ data: Foundation.Data) throws -> Swift.Void) throws -> begini_ios_sdk.CRC32
+}
+public struct CompressionLevel : Swift.RawRepresentable {
+  public let rawValue: Swift.Int32
+  public static let noCompression: begini_ios_sdk.CompressionLevel
+  public static let bestSpeed: begini_ios_sdk.CompressionLevel
+  public static let bestCompression: begini_ios_sdk.CompressionLevel
+  public static let defaultCompression: begini_ios_sdk.CompressionLevel
+  public init(rawValue: Swift.Int32)
+  public init(_ rawValue: Swift.Int32)
+  public typealias RawValue = Swift.Int32
+}
+public struct GzipError : Swift.Error {
+  public enum Kind : Swift.Equatable {
+    case stream
+    case data
+    case memory
+    case buffer
+    case version
+    case unknown(code: Swift.Int)
+    public static func == (a: begini_ios_sdk.GzipError.Kind, b: begini_ios_sdk.GzipError.Kind) -> Swift.Bool
+  }
+  public let kind: begini_ios_sdk.GzipError.Kind
+  public let message: Swift.String
+  public var localizedDescription: Swift.String {
+    get
+  }
+}
+extension Foundation.Data {
+  public var isGzipped: Swift.Bool {
+    get
+  }
+  public func gzipped(level: begini_ios_sdk.CompressionLevel = .defaultCompression) throws -> Foundation.Data
+  public func gunzipped() throws -> Foundation.Data
+}
+extension Foundation.Data {
+  @available(*, deprecated, message: "Please use `Int64` for `size` and provider `position`.")
+  public static func compress(size: Swift.Int, bufferSize: Swift.Int, provider: (_ position: Swift.Int, _ size: Swift.Int) throws -> Foundation.Data, consumer: (_ data: Foundation.Data) throws -> Swift.Void) throws -> begini_ios_sdk.CRC32
+  @available(*, deprecated, message: "Please use `Int64` for `size` and provider `position`.")
+  public static func decompress(size: Swift.Int, bufferSize: Swift.Int, skipCRC32: Swift.Bool, provider: (_ position: Swift.Int, _ size: Swift.Int) throws -> Foundation.Data, consumer: (_ data: Foundation.Data) throws -> Swift.Void) throws -> begini_ios_sdk.CRC32
+}
+extension begini_ios_sdk.Archive {
+  final public func addEntry(with path: Swift.String, relativeTo baseURL: Foundation.URL, compressionMethod: begini_ios_sdk.CompressionMethod = .none, bufferSize: Swift.Int = defaultWriteChunkSize, progress: Foundation.Progress? = nil) throws
+  final public func addEntry(with path: Swift.String, fileURL: Foundation.URL, compressionMethod: begini_ios_sdk.CompressionMethod = .none, bufferSize: Swift.Int = defaultWriteChunkSize, progress: Foundation.Progress? = nil) throws
+  final public func addEntry(with path: Swift.String, type: begini_ios_sdk.Entry.EntryType, uncompressedSize: Swift.Int64, modificationDate: Foundation.Date = Date(), permissions: Swift.UInt16? = nil, compressionMethod: begini_ios_sdk.CompressionMethod = .none, bufferSize: Swift.Int = defaultWriteChunkSize, progress: Foundation.Progress? = nil, provider: (_ position: Swift.Int64, _ size: Swift.Int) throws -> Foundation.Data) throws
+  final public func remove(_ entry: begini_ios_sdk.Entry, bufferSize: Swift.Int = defaultReadChunkSize, progress: Foundation.Progress? = nil) throws
+}
+@objc @_inheritsConvenienceInitializers public class BeginiAuthorize : ObjectiveC.NSObject {
+  public static let shared: begini_ios_sdk.BeginiAuthorize
+  public func BeginiDataSdkOptions(integration_id: Swift.String, api_key: Swift.String, isContactsEnabled: Swift.Bool, isProfileEnabled: Swift.Bool, u_id: Swift.String, isBatteryEnabled: Swift.Bool, isWifiEnabled: Swift.Bool, isGalleryExifDataEnabled: Swift.Bool, isCalendarEnabled: Swift.Bool, isLocationEnabled: Swift.Bool, primaryColor: UIKit.UIColor, delegate: begini_ios_sdk.BeginiAuthorizeDelegate, presentingVC: UIKit.UIViewController)
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension begini_ios_sdk.Archive {
+  @available(*, deprecated, message: "Please use `Int` for `bufferSize`.")
+  final public func addEntry(with path: Swift.String, relativeTo baseURL: Foundation.URL, compressionMethod: begini_ios_sdk.CompressionMethod = .none, bufferSize: Swift.UInt32, progress: Foundation.Progress? = nil) throws
+  @available(*, deprecated, message: "Please use `Int` for `bufferSize`.")
+  final public func addEntry(with path: Swift.String, fileURL: Foundation.URL, compressionMethod: begini_ios_sdk.CompressionMethod = .none, bufferSize: Swift.UInt32, progress: Foundation.Progress? = nil) throws
+  @available(*, deprecated, message: "Please use `Int64` for `uncompressedSize` and provider `position`. `Int` for `bufferSize`.")
+  final public func addEntry(with path: Swift.String, type: begini_ios_sdk.Entry.EntryType, uncompressedSize: Swift.UInt32, modificationDate: Foundation.Date = Date(), permissions: Swift.UInt16? = nil, compressionMethod: begini_ios_sdk.CompressionMethod = .none, bufferSize: Swift.Int = defaultWriteChunkSize, progress: Foundation.Progress? = nil, provider: (_ position: Swift.Int, _ size: Swift.Int) throws -> Foundation.Data) throws
+  @available(*, deprecated, message: "Please use `Int` for `bufferSize`.")
+  final public func remove(_ entry: begini_ios_sdk.Entry, bufferSize: Swift.UInt32, progress: Foundation.Progress? = nil) throws
+}
+@objc public enum KDCircularProgressGlowMode : Swift.Int {
+  case forward, reverse, constant, noGlow
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @IBDesignable @objcMembers @_Concurrency.MainActor(unsafe) public class KDCircularProgress : UIKit.UIView, QuartzCore.CAAnimationDelegate {
+  @objc @_Concurrency.MainActor(unsafe) public var progress: Swift.Double {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var angle: Swift.Double {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var startAngle: Swift.Double {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var clockwise: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var roundedCorners: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var lerpColorMode: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var gradientRotateSpeed: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var glowAmount: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var glowMode: begini_ios_sdk.KDCircularProgressGlowMode {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var progressThickness: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var trackThickness: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var trackColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var progressInsideFillColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var progressColors: [UIKit.UIColor] {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) convenience public init(frame: CoreFoundation.CGRect, colors: UIKit.UIColor...)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func awakeFromNib()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public class var layerClass: Swift.AnyClass {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) public func set(colors: UIKit.UIColor...)
+  @objc @_Concurrency.MainActor(unsafe) public func animate(fromAngle: Swift.Double, toAngle: Swift.Double, duration: Foundation.TimeInterval, relativeDuration: Swift.Bool = true, completion: ((Swift.Bool) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) public func animate(toAngle: Swift.Double, duration: Foundation.TimeInterval, relativeDuration: Swift.Bool = true, completion: ((Swift.Bool) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) public func pauseAnimation()
+  @objc @_Concurrency.MainActor(unsafe) public func stopAnimation()
+  @objc @_Concurrency.MainActor(unsafe) public func isAnimating() -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc public func animationDidStop(_ anim: QuartzCore.CAAnimation, finished flag: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func didMoveToWindow()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func willMove(toSuperview newSuperview: UIKit.UIView?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func prepareForInterfaceBuilder()
+  @objc deinit
+}
+extension Foundation.FileManager {
+  public func zipItem(at sourceURL: Foundation.URL, to destinationURL: Foundation.URL, shouldKeepParent: Swift.Bool = true, compressionMethod: begini_ios_sdk.CompressionMethod = .none, progress: Foundation.Progress? = nil) throws
+  public func unzipItem(at sourceURL: Foundation.URL, to destinationURL: Foundation.URL, skipCRC32: Swift.Bool = false, progress: Foundation.Progress? = nil, preferredEncoding: Swift.String.Encoding? = nil) throws
+}
+extension Foundation.URL {
+  public func isContained(in parentDirectoryURL: Foundation.URL) -> Swift.Bool
+}
+extension begini_ios_sdk.Archive {
+  final public var data: Foundation.Data? {
+    get
+  }
+}
+public enum AuthorizationStatus {
+  case success
+  case failed
+  case cancelled
+  public static func == (a: begini_ios_sdk.AuthorizationStatus, b: begini_ios_sdk.AuthorizationStatus) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum ProgressStatus {
+  case permission_requesting
+  case data_colletion
+  case data_sending
+  case scroe_generating
+  case completed
+  public static func == (a: begini_ios_sdk.ProgressStatus, b: begini_ios_sdk.ProgressStatus) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public let defaultReadChunkSize: Swift.Int
+public let defaultWriteChunkSize: Swift.Int
+public let defaultFilePermissions: Swift.UInt16
+public let defaultDirectoryPermissions: Swift.UInt16
+final public class Archive : Swift.Sequence {
+  public enum ArchiveError : Swift.Error {
+    case unreadableArchive
+    case unwritableArchive
+    case invalidEntryPath
+    case invalidCompressionMethod
+    case cancelledOperation
+    case invalidBufferSize
+    case invalidEntrySize
+    case invalidLocalHeaderDataOffset
+    case invalidLocalHeaderSize
+    case invalidCentralDirectoryOffset
+    case invalidCentralDirectorySize
+    case invalidCentralDirectoryEntryCount
+    case missingEndOfCentralDirectoryRecord
+    public static func == (a: begini_ios_sdk.Archive.ArchiveError, b: begini_ios_sdk.Archive.ArchiveError) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum AccessMode : Swift.UInt {
+    case create
+    case read
+    case update
+    public init?(rawValue: Swift.UInt)
+    public typealias RawValue = Swift.UInt
+    public var rawValue: Swift.UInt {
+      get
+    }
+  }
+  final public let url: Foundation.URL
+  final public let accessMode: begini_ios_sdk.Archive.AccessMode
+  public init?(url: Foundation.URL, accessMode mode: begini_ios_sdk.Archive.AccessMode, preferredEncoding: Swift.String.Encoding? = nil)
+  public init?(data: Foundation.Data = Data(), accessMode mode: begini_ios_sdk.Archive.AccessMode, preferredEncoding: Swift.String.Encoding? = nil)
+  @objc deinit
+  final public func makeIterator() -> Swift.AnyIterator<begini_ios_sdk.Entry>
+  final public subscript(path: Swift.String) -> begini_ios_sdk.Entry? {
+    get
+  }
+  public typealias Element = begini_ios_sdk.Entry
+  public typealias Iterator = Swift.AnyIterator<begini_ios_sdk.Entry>
+}
+public struct Entry : Swift.Equatable {
+  public enum EntryType : Swift.Int {
+    case file
+    case directory
+    case symlink
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public func path(using encoding: Swift.String.Encoding) -> Swift.String
+  public var path: Swift.String {
+    get
+  }
+  public var fileAttributes: [Foundation.FileAttributeKey : Any] {
+    get
+  }
+  public var checksum: begini_ios_sdk.CRC32 {
+    get
+  }
+  public var type: begini_ios_sdk.Entry.EntryType {
+    get
+  }
+  public var compressedSize: Swift.UInt64 {
+    get
+  }
+  public var uncompressedSize: Swift.UInt64 {
+    get
+  }
+  public static func == (lhs: begini_ios_sdk.Entry, rhs: begini_ios_sdk.Entry) -> Swift.Bool
+}
+extension begini_ios_sdk.Archive {
+  final public func totalUnitCountForRemoving(_ entry: begini_ios_sdk.Entry) -> Swift.Int64
+  final public func totalUnitCountForReading(_ entry: begini_ios_sdk.Entry) -> Swift.Int64
+  final public func totalUnitCountForAddingItem(at url: Foundation.URL) -> Swift.Int64
+}
+public protocol BeginiAuthorizeDelegate : AnyObject {
+  func onAuthorizeStarted()
+  func onAuthorizeComplete(status: begini_ios_sdk.AuthorizationStatus)
+  func onAuthorizeFailure(status: begini_ios_sdk.AuthorizationStatus, message: Swift.String, code: Swift.String?)
+  func onAuthorizeCancelled(status: begini_ios_sdk.AuthorizationStatus, message: Swift.String)
+  func onStatusUpdate(status: begini_ios_sdk.ProgressStatus)
+}
+extension begini_ios_sdk.Archive {
+  @available(*, deprecated, message: "Please use `Int` for `bufferSize`.")
+  final public func extract(_ entry: begini_ios_sdk.Entry, to url: Foundation.URL, bufferSize: Swift.UInt32, skipCRC32: Swift.Bool = false, progress: Foundation.Progress? = nil) throws -> begini_ios_sdk.CRC32
+  @available(*, deprecated, message: "Please use `Int` for `bufferSize`.")
+  final public func extract(_ entry: begini_ios_sdk.Entry, bufferSize: Swift.UInt32, skipCRC32: Swift.Bool = false, progress: Foundation.Progress? = nil, consumer: (_ data: Foundation.Data) throws -> Swift.Void) throws -> begini_ios_sdk.CRC32
+}
+extension begini_ios_sdk.Archive {
+  final public func extract(_ entry: begini_ios_sdk.Entry, to url: Foundation.URL, bufferSize: Swift.Int = defaultReadChunkSize, skipCRC32: Swift.Bool = false, progress: Foundation.Progress? = nil) throws -> begini_ios_sdk.CRC32
+  final public func extract(_ entry: begini_ios_sdk.Entry, bufferSize: Swift.Int = defaultReadChunkSize, skipCRC32: Swift.Bool = false, progress: Foundation.Progress? = nil, consumer: (_ data: Foundation.Data) throws -> Swift.Void) throws -> begini_ios_sdk.CRC32
+}
+extension begini_ios_sdk.CompressionMethod : Swift.Equatable {}
+extension begini_ios_sdk.CompressionMethod : Swift.Hashable {}
+extension begini_ios_sdk.CompressionMethod : Swift.RawRepresentable {}
+extension begini_ios_sdk.KDCircularProgressGlowMode : Swift.Equatable {}
+extension begini_ios_sdk.KDCircularProgressGlowMode : Swift.Hashable {}
+extension begini_ios_sdk.KDCircularProgressGlowMode : Swift.RawRepresentable {}
+extension begini_ios_sdk.AuthorizationStatus : Swift.Equatable {}
+extension begini_ios_sdk.AuthorizationStatus : Swift.Hashable {}
+extension begini_ios_sdk.ProgressStatus : Swift.Equatable {}
+extension begini_ios_sdk.ProgressStatus : Swift.Hashable {}
+extension begini_ios_sdk.Archive.ArchiveError : Swift.Equatable {}
+extension begini_ios_sdk.Archive.ArchiveError : Swift.Hashable {}
+extension begini_ios_sdk.Archive.AccessMode : Swift.Equatable {}
+extension begini_ios_sdk.Archive.AccessMode : Swift.Hashable {}
+extension begini_ios_sdk.Archive.AccessMode : Swift.RawRepresentable {}
+extension begini_ios_sdk.Entry.EntryType : Swift.Equatable {}
+extension begini_ios_sdk.Entry.EntryType : Swift.Hashable {}
+extension begini_ios_sdk.Entry.EntryType : Swift.RawRepresentable {}
