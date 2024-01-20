@@ -27,10 +27,15 @@
         NSLog(@"Callback from Swift using closure! %@", initializedString);
     };
     
-    [obj setSampleCallback:myCallback];
+    obj.sampleCallback = myCallback;
     [obj sampleOperatation];
     
 }
 
+-(NSString * )myMethod: (NSString *)string {
+  NSMutableString *sampleString = [NSMutableString stringWithString:@"firstString"];
+  [sampleString stringByAppendingString:string];
+  return sampleString;
+}
 
 @end
