@@ -16,6 +16,7 @@
 		B825BD072B5C0F6200B47C1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B825BD052B5C0F6200B47C1A /* LaunchScreen.storyboard */; };
 		B825BD0A2B5C0F6200B47C1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B825BD092B5C0F6200B47C1A /* main.m */; };
 		B825BD122B5C0FB700B47C1A /* BeginiSdkIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B825BD112B5C0FB700B47C1A /* BeginiSdkIntegration.swift */; };
+		B825BD1D2B5C757000B47C1A /* NNN.m in Sources */ = {isa = PBXBuildFile; fileRef = B825BD1C2B5C757000B47C1A /* NNN.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,8 @@
 		B825BD092B5C0F6200B47C1A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B825BD102B5C0FB600B47C1A /* ObjectiveBridgingWithSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ObjectiveBridgingWithSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		B825BD112B5C0FB700B47C1A /* BeginiSdkIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginiSdkIntegration.swift; sourceTree = "<group>"; };
+		B825BD1B2B5C757000B47C1A /* NNN.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NNN.h; sourceTree = "<group>"; };
+		B825BD1C2B5C757000B47C1A /* NNN.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NNN.m; sourceTree = "<group>"; };
 		C13153BA46946C00F9E30B86 /* Pods-ObjectiveBridgingWithSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjectiveBridgingWithSwift.debug.xcconfig"; path = "Target Support Files/Pods-ObjectiveBridgingWithSwift/Pods-ObjectiveBridgingWithSwift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,6 +95,8 @@
 				B825BD092B5C0F6200B47C1A /* main.m */,
 				B825BD112B5C0FB700B47C1A /* BeginiSdkIntegration.swift */,
 				B825BD102B5C0FB600B47C1A /* ObjectiveBridgingWithSwift-Bridging-Header.h */,
+				B825BD1B2B5C757000B47C1A /* NNN.h */,
+				B825BD1C2B5C757000B47C1A /* NNN.m */,
 			);
 			path = ObjectiveBridgingWithSwift;
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B825BD1D2B5C757000B47C1A /* NNN.m in Sources */,
 				B825BCFF2B5C0F6000B47C1A /* ViewController.m in Sources */,
 				B825BCF92B5C0F6000B47C1A /* AppDelegate.m in Sources */,
 				B825BD0A2B5C0F6200B47C1A /* main.m in Sources */,
